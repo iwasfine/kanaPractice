@@ -8,20 +8,20 @@
 #include <vector>
 
 #include "BuildMap.h"
-#include "kanas.h"
 #include "Score.h"
+#include "common.h"
+#include "kanas.h"
 
 int exam(kanas japs, std::default_random_engine &rng);
 
 int main(int argc, char *argv[]) {
-    // BuildMap bm("./mapping");
-    string f = "/home/iwasfine/repos/kanaPractice/mapping";
+    string f = PROJECTPATH + "mapping";
     BuildMap bm(f);
     auto s = bm.build();
     kanas japs(s);
     auto rng = std::default_random_engine{};
     rng.seed(std::chrono::system_clock::now().time_since_epoch().count());
-    std::ofstream outfile("/home/iwasfine/repos/kanaPractice/scores", std::ios::app);
+    std::ofstream outfile(PROJECTPATH + "scores", std::ios::app);
     if (!outfile.is_open()) {
         std::cerr << "Unable to open file." << std::endl;
         return 1;
@@ -33,7 +33,6 @@ int main(int argc, char *argv[]) {
     outfile << score << " ";
     outfile.close();
     auto h = Score::getHistory();
-    // for (auto x:h) std::cout<<x;
     Score current(h);
     std::cout << "You got " << current.getLast100() << " right out of last 100." << std::endl;
     return 0;
@@ -59,13 +58,13 @@ int exam(kanas japs, std::default_random_engine &rng) {
     std::cout << "Which one is it? : ";
     if (std::cin >> anwser && anwser >= 0 && anwser < 10 && showList[anwser].first == result) {
         std::cout << "\033[32m"
-                  << "RIGHT!"
+                  << ""
                   << "\033[0m" << std::endl
                   << std::endl;
         return 1;
     } else {
         std::cout << "\033[31m"
-                  << "WRONG!"
+                  << ""
                   << "\033[0m"
                   << " The right anwser is "
                   << "\033[32m" << rightAnwser << result << "\033[0m" << std::endl

@@ -12,10 +12,8 @@ class Score {
    private:
     std::vector<int> scores;
     static bool fileExists(const std::string& filename) {
-        // std::cout << filename;
         std::ifstream infile(filename);
         bool res = infile.good();
-        // std::cout << res;
         infile.close();
         return res;
     }
