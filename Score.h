@@ -8,6 +8,7 @@ class Score {
     Score(std::vector<int>& h) : scores(h){};
     int getLast100();
     static std::vector<int> getHistory();
+    void showProgress();
 
    private:
     std::vector<int> scores;

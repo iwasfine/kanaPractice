@@ -35,6 +35,9 @@ int main(int argc, char *argv[]) {
     auto h = Score::getHistory();
     Score current(h);
     std::cout << "You got " << current.getLast100() << " right out of last 100." << std::endl;
+    std::cout << "Do you want to see your progress?(y/n): ";
+    std::string yn;
+    if (std::cin >> yn && yn == "y") current.showProgress();
     return 0;
 }
 
