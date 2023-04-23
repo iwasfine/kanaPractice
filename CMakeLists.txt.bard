@@ -1,0 +1,12 @@
+
+cmake_minimum_required(VERSION 3.10)
+
+project(kanaExam CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(kana kanaExam.cpp BuildMap.cpp common.cpp kanas.cpp Score.cpp)
+
+target_include_directories(kana PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+install(TARGETS kana DESTINATION bin)
