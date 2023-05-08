@@ -13,6 +13,7 @@
 #include "kanas.h"
 
 int exam(kanas japs, std::default_random_engine &rng);
+void showAll(vector<std::pair<string, string>> showList);
 
 int main(int argc, char *argv[]) {
     string f = PROJECTPATH + "mapping";
@@ -28,6 +29,8 @@ int main(int argc, char *argv[]) {
     }
     int score = 0;
     for (int i = 0; i < 10; ++i) {
+        std::cout << "\033[34m" << i + 1 << "  "
+                  << "\033[0m";
         score += exam(japs, rng);
     }
     outfile << score << " ";
@@ -60,12 +63,14 @@ int exam(kanas japs, std::default_random_engine &rng) {
     int anwser;
     std::cout << "Which one is it? : ";
     if (std::cin >> anwser && anwser >= 0 && anwser < 10 && showList[anwser].first == result) {
+        showAll(showList);
         std::cout << "\033[32m"
                   << ""
                   << "\033[0m" << std::endl
                   << std::endl;
         return 1;
     } else {
+        showAll(showList);
         std::cout << "\033[31m"
                   << ""
                   << "\033[0m"
@@ -76,4 +81,12 @@ int exam(kanas japs, std::default_random_engine &rng) {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         return 0;
     }
+}
+
+void showAll(vector<std::pair<string, string>> showList) {
+    for (auto p : showList) {
+        std::cout << p.second << "\033[32m" << p.first << "  "
+                  << "\033[0m";
+    }
+    std::cout << std::endl;
 }
