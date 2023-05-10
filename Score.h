@@ -1,7 +1,7 @@
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <vector>
-#include <iostream>
 
 class Score {
    public:
@@ -12,6 +12,13 @@ class Score {
 
    private:
     std::vector<int> scores;
+
+    /**
+     * check the file of scores exist or not
+     *
+     * @param filename
+     * @return the result
+     */
     static bool fileExists(const std::string& filename) {
         std::ifstream infile(filename);
         bool res = infile.good();

@@ -1,5 +1,8 @@
 #include "BuildMap.h"
 
+/**
+ * build a map from the file.
+ */
 map<string, vector<string>> BuildMap::build() {
     ifstream f;
     map<string, vector<string>> ret;

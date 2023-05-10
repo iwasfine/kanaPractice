@@ -44,6 +44,13 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+/**
+ * one exam, show random 10 kanas and a pronouce, take a anwser, judge right or wrong
+ *
+ * @param kanas japs
+ * @param rng: random genarator
+ * @return int: score of this exam
+ */
 int exam(kanas japs, std::default_random_engine &rng) {
     vector<std::pair<string, string>> showList;
     for (int i = 0; i < 10; ++i) {
@@ -83,6 +90,11 @@ int exam(kanas japs, std::default_random_engine &rng) {
     }
 }
 
+/**
+ * output the candidates
+ *
+ * @param showList: vector of candidates
+ */
 void showAll(vector<std::pair<string, string>> showList) {
     for (auto p : showList) {
         std::cout << p.second << "\033[32m" << p.first << "  "

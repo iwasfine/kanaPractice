@@ -7,6 +7,10 @@
 
 #include "common.h"
 
+/**
+ * get the last 100 total score
+ * @return the total score
+ */
 int Score::getLast100() {
     int count = 0, res = 0;
     for (auto it = scores.rbegin(); count < 10 && it != scores.rend(); ++count, ++it) {
@@ -15,6 +19,9 @@ int Score::getLast100() {
     return res;
 }
 
+/**
+ * put score history to a vector and return it
+ */
 std::vector<int> Score::getHistory() {
     std::vector<int> res;
     std::string fileName = PROJECTPATH + "scores";
@@ -27,6 +34,9 @@ std::vector<int> Score::getHistory() {
     return res;
 }
 
+/**
+ * show score history in graph
+ */
 void Score::showProgress() {
     int total = 0;
     std::deque<int> que;
